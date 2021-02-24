@@ -1,5 +1,6 @@
 /*
  * Copyright 2021 The Android Open Source Project
+ * Copyright 2021 Mike Klimek
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +18,6 @@ package com.example.androiddevchallenge.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val purple200 = Color(0xFFBB86FC)
-val purple500 = Color(0xFF6200EE)
-val purple700 = Color(0xFF3700B3)
-val teal200 = Color(0xFF03DAC5)
+val green200 = Color(0xFFa5d6a7)
+val green500 = Color(0xFF4CAF50)
+val green700 = Color(0xFF388e3b)

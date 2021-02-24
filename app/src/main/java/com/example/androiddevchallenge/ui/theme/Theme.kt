@@ -1,5 +1,6 @@
 /*
  * Copyright 2021 The Android Open Source Project
+ * Copyright 2021 Mike Klimek
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,15 +23,15 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 
 private val DarkColorPalette = darkColors(
-    primary = purple200,
-    primaryVariant = purple700,
-    secondary = teal200
+    primary = green200,
+    primaryVariant = green700,
+    secondary = green200
 )
 
 private val LightColorPalette = lightColors(
-    primary = purple500,
-    primaryVariant = purple700,
-    secondary = teal200
+    primary = green500,
+    primaryVariant = green700,
+    secondary = green200
 
         /* Other default colors to override
     background = Color.White,

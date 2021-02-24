@@ -1,5 +1,6 @@
 /*
  * Copyright 2021 The Android Open Source Project
+ * Copyright 2021 Mike Klimek
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +22,6 @@ import androidx.compose.ui.unit.dp
 
 val shapes = Shapes(
     small = RoundedCornerShape(4.dp),
-    medium = RoundedCornerShape(4.dp),
+    medium = RoundedCornerShape(8.dp),
     large = RoundedCornerShape(0.dp)
 )
