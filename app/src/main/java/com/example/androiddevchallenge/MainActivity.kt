@@ -20,14 +20,18 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CornerSize
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -47,7 +51,6 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-// Start building your app here!
 @Composable
 fun MyApp() {
     Scaffold(
@@ -58,22 +61,28 @@ fun MyApp() {
 
 @Composable
 fun AppBar() {
+    val onlyBottomCornerShape = MaterialTheme.shapes.medium.copy(
+        topStart = CornerSize(0),
+        topEnd = CornerSize(0),
+    )
     TopAppBar(
-        title = { Text(stringResource(R.string.app_name)) }
+        modifier = Modifier.clip(onlyBottomCornerShape),
+        title = { Text(stringResource(R.string.app_name)) },
     )
 }
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PuppyList(puppies: List<Puppy>) {
-    Box {
-        LazyVerticalGrid(GridCells.Adaptive(192.dp)) {
-            items(puppies) { PuppyItem(it) }
-        }
+    LazyVerticalGrid(
+        contentPadding = PaddingValues(8.dp),
+        cells = GridCells.Fixed(2),
+    ) {
+        items(puppies) { PuppyItem(it) }
     }
 }
 
-@Preview("Light Theme", widthDp = 480, heightDp = 800)
+@Preview("Light Theme", widthDp = 360, heightDp = 640)
 @Composable
 fun LightPreview() {
     MyTheme {
@@ -81,7 +90,7 @@ fun LightPreview() {
     }
 }
 
-@Preview("Dark Theme", widthDp = 480, heightDp = 800)
+@Preview("Dark Theme", widthDp = 360, heightDp = 640)
 @Composable
 fun DarkPreview() {
     MyTheme(darkTheme = true) {

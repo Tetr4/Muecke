@@ -19,5 +19,10 @@ package com.example.androiddevchallenge.data
 import com.example.androiddevchallenge.R
 
 val PUPPIES = (1..30).map {
-    Puppy("Mücke $it", R.drawable.muecke)
+    Puppy(
+        name = "Mücke $it",
+        caption = "Actually not a puppy",
+        description = "Just look at those ears! Also not up for adoption anymore.",
+        image = R.drawable.muecke,
+    )
 }

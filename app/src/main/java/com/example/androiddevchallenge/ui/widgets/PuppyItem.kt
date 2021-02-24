@@ -37,12 +37,10 @@ import com.example.androiddevchallenge.ui.theme.MyTheme
 @Composable
 fun PuppyItem(puppy: Puppy) {
     Card(
+        modifier = Modifier.padding(8.dp),
         elevation = 8.dp,
-        modifier = Modifier
-            .padding(8.dp)
-            .clickable { }
     ) {
-        Column {
+        Column(Modifier.clickable { openDetailView(puppy) }) {
             ListItem(
                 text = { Text(puppy.name) },
                 secondaryText = puppy.caption?.let {
@@ -55,6 +53,10 @@ fun PuppyItem(puppy: Puppy) {
             )
         }
     }
+}
+
+fun openDetailView(puppy: Puppy) {
+    // TODO
 }
 
 @Preview("Light Theme")
