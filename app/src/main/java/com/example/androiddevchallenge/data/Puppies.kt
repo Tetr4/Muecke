@@ -27,5 +27,3 @@ val PUPPIES = (1..30).map {
         image = R.drawable.muecke,
     )
 }
-
-fun findPuppyById(id: Int) = PUPPIES.first { it.id == id }

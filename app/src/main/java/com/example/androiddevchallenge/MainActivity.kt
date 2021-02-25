@@ -23,17 +23,20 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
+import androidx.navigation.compose.KEY_ROUTE
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
 import com.example.androiddevchallenge.data.PUPPIES
-import com.example.androiddevchallenge.data.findPuppyById
+import com.example.androiddevchallenge.data.Puppy
 import com.example.androiddevchallenge.ui.screens.PuppyDetail
 import com.example.androiddevchallenge.ui.screens.PuppyList
 import com.example.androiddevchallenge.ui.widgets.AppBar
@@ -54,9 +57,25 @@ class MainActivity : AppCompatActivity() {
 fun MyApp() {
     val navController = rememberNavController()
     Scaffold(
-        topBar = { AppBar(stringResource(R.string.app_name)) },
-        content = { NavGraph(navController) }
-    )
+        topBar = { ControlledAppbar(navController) }
+    ) {
+        NavGraph(navController)
+    }
+}
+
+@Composable
+fun ControlledAppbar(navController: NavHostController) {
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val route = navBackStackEntry?.arguments?.getString(KEY_ROUTE)
+    when (route?.substringBefore('/')) {
+        "PuppyList" -> AppBar(stringResource(R.string.app_name))
+        "PuppyDetail" -> {
+            AppBar(
+                title = navBackStackEntry?.arguments.getPuppy().name,
+                onBackPressed = { navController.popBackStack() }
+            )
+        }
+    }
 }
 
 @Composable
@@ -65,15 +84,14 @@ fun NavGraph(navController: NavHostController) {
         composable("PuppyList") {
             PuppyList(
                 PUPPIES,
-                showPuppyDetails = { puppy -> navController.navigate("PuppyDetail/${puppy.id}") },
+                showPuppyDetails = { navController.navigate("PuppyDetail/${it.id}") },
             )
         }
         composable(
             "PuppyDetail/{id}",
             arguments = listOf(navArgument("id") { type = NavType.IntType })
         ) {
-            val id = it.arguments?.getInt("id") ?: 1
-            PuppyDetail(findPuppyById(id))
+            PuppyDetail(it.arguments.getPuppy())
         }
     }
 }
@@ -82,7 +100,12 @@ fun NavGraph(navController: NavHostController) {
 @Composable
 private fun LightPreview() {
     MdcTheme {
-        NavGraph(rememberNavController())
+        // NavHost uses viewmodels which is not supported in preview
+        Scaffold(
+            topBar = { AppBar(stringResource(R.string.app_name)) }
+        ) {
+            PuppyList(PUPPIES)
+        }
     }
 }
 
@@ -90,6 +113,17 @@ private fun LightPreview() {
 @Composable
 private fun DarkPreview() {
     MdcTheme {
-        MyApp()
+        // NavHost uses viewmodels which is not supported in preview
+        Scaffold(
+            topBar = { AppBar(stringResource(R.string.app_name)) }
+        ) {
+            PuppyList(PUPPIES)
+        }
     }
+}
+
+private fun Bundle?.getPuppy(): Puppy {
+    val id = this?.getInt("id")
+        ?: throw IllegalArgumentException("id argument is required")
+    return PUPPIES.first { it.id == id }
 }

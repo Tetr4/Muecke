@@ -50,7 +50,7 @@ fun PuppyList(puppies: List<Puppy>, showPuppyDetails: (Puppy) -> Unit = {}) {
 @Composable
 private fun LightPreview() {
     MdcTheme {
-        PuppyList(PUPPIES, showPuppyDetails = {})
+        PuppyList(PUPPIES)
     }
 }
 
@@ -58,6 +58,6 @@ private fun LightPreview() {
 @Composable
 private fun DarkPreview() {
     MdcTheme {
-        PuppyList(PUPPIES, showPuppyDetails = {})
+        PuppyList(PUPPIES)
     }
 }
