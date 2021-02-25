@@ -19,11 +19,14 @@ package com.example.androiddevchallenge.ui.screens
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.data.PUPPIES
 import com.example.androiddevchallenge.data.Puppy
 import com.google.android.material.composethemeadapter.MdcTheme
@@ -32,7 +35,11 @@ import com.google.android.material.composethemeadapter.MdcTheme
 fun PuppyDetail(puppy: Puppy) {
     Column {
         Image(painterResource(puppy.image), contentDescription = puppy.name)
-        Text(puppy.description, style = MaterialTheme.typography.body2)
+        Text(
+            puppy.description,
+            modifier = Modifier.padding(32.dp),
+            style = MaterialTheme.typography.body2,
+        )
     }
 }
 
