@@ -20,9 +20,12 @@ import com.example.androiddevchallenge.R
 
 val PUPPIES = (1..30).map {
     Puppy(
+        id = it,
         name = "Mücke $it",
         caption = "Actually not a puppy",
         description = "Just look at those ears! Also not up for adoption anymore.",
         image = R.drawable.muecke,
     )
 }
+
+fun findPuppyById(id: Int) = PUPPIES.first { it.id == id }

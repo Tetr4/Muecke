@@ -19,6 +19,7 @@ package com.example.androiddevchallenge.data
 import androidx.annotation.DrawableRes
 
 data class Puppy(
+    val id: Int,
     val name: String,
     val caption: String? = null,
     val description: String,

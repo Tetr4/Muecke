@@ -1,5 +1,5 @@
 /*
- * Copyright 2021-2021 The Android Open Source Project
+ * Copyright 2021 The Android Open Source Project
  * Copyright 2021 Mike Klimek
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,43 +14,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.ui.widgets
+package com.example.androiddevchallenge.ui.screens
 
 import android.content.res.Configuration
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Card
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.ListItem
-import androidx.compose.material.Text
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.lazy.GridCells
+import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.data.PUPPIES
 import com.example.androiddevchallenge.data.Puppy
+import com.example.androiddevchallenge.ui.widgets.PuppyItem
 import com.google.android.material.composethemeadapter.MdcTheme
 
-@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun PuppyItem(puppy: Puppy, onClick: () -> Unit) {
-    Card(
-        modifier = Modifier.padding(8.dp),
-        elevation = 8.dp,
+fun PuppyList(puppies: List<Puppy>, showPuppyDetails: (Puppy) -> Unit = {}) {
+    LazyVerticalGrid(
+        contentPadding = PaddingValues(8.dp),
+        cells = GridCells.Fixed(2),
     ) {
-        Column(Modifier.clickable(onClick = onClick)) {
-            ListItem(
-                text = { Text(puppy.name) },
-                secondaryText = puppy.caption?.let {
-                    { Text(puppy.caption) }
-                },
-            )
-            Image(
-                painter = painterResource(puppy.image),
-                contentDescription = puppy.name,
+        items(puppies) { puppy ->
+            PuppyItem(
+                puppy,
+                onClick = { showPuppyDetails(puppy) },
             )
         }
     }
@@ -60,7 +50,7 @@ fun PuppyItem(puppy: Puppy, onClick: () -> Unit) {
 @Composable
 private fun LightPreview() {
     MdcTheme {
-        PuppyItem(PUPPIES.first(), onClick = {})
+        PuppyList(PUPPIES, showPuppyDetails = {})
     }
 }
 
@@ -68,6 +58,6 @@ private fun LightPreview() {
 @Composable
 private fun DarkPreview() {
     MdcTheme {
-        PuppyItem(PUPPIES.first(), onClick = {})
+        PuppyList(PUPPIES, showPuppyDetails = {})
     }
 }
