@@ -16,6 +16,8 @@
  */
 package com.example.androiddevchallenge
 
+import android.content.res.Configuration.UI_MODE_NIGHT_NO
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
@@ -37,14 +39,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.data.PUPPIES
 import com.example.androiddevchallenge.data.Puppy
-import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.ui.widgets.PuppyItem
+import com.google.android.material.composethemeadapter.MdcTheme
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyTheme {
+            MdcTheme {
                 MyApp()
             }
         }
@@ -82,18 +84,18 @@ fun PuppyList(puppies: List<Puppy>) {
     }
 }
 
-@Preview("Light Theme", widthDp = 360, heightDp = 640)
+@Preview("Light Theme", widthDp = 360, heightDp = 640, uiMode = UI_MODE_NIGHT_NO)
 @Composable
 fun LightPreview() {
-    MyTheme {
+    MdcTheme {
         MyApp()
     }
 }
 
-@Preview("Dark Theme", widthDp = 360, heightDp = 640)
+@Preview("Dark Theme", widthDp = 360, heightDp = 640, uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun DarkPreview() {
-    MyTheme(darkTheme = true) {
+    MdcTheme {
         MyApp()
     }
 }

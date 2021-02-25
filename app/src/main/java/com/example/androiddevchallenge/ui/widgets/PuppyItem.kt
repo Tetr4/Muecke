@@ -16,6 +16,7 @@
  */
 package com.example.androiddevchallenge.ui.widgets
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -31,7 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.data.PUPPIES
 import com.example.androiddevchallenge.data.Puppy
-import com.example.androiddevchallenge.ui.theme.MyTheme
+import com.google.android.material.composethemeadapter.MdcTheme
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -59,18 +60,18 @@ fun openDetailView(puppy: Puppy) {
     // TODO
 }
 
-@Preview("Light Theme")
+@Preview("Light Theme", uiMode = Configuration.UI_MODE_NIGHT_NO)
 @Composable
 fun LightPreview() {
-    MyTheme {
+    MdcTheme {
         PuppyItem(PUPPIES.first())
     }
 }
 
-@Preview("Dark Theme")
+@Preview("Dark Theme", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun DarkPreview() {
-    MyTheme(darkTheme = true) {
+    MdcTheme {
         PuppyItem(PUPPIES.first())
     }
 }
