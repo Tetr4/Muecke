@@ -17,7 +17,6 @@
 package com.example.androiddevchallenge.ui.widgets
 
 import android.content.res.Configuration
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -27,14 +26,13 @@ import androidx.compose.material.ListItem
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.data.PUPPIES
 import com.example.androiddevchallenge.data.Puppy
 import com.google.android.material.composethemeadapter.MdcTheme
+import dev.chrisbanes.accompanist.coil.CoilImage
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun PuppyItem(puppy: Puppy, onClick: () -> Unit) {
     Card(
@@ -42,18 +40,30 @@ fun PuppyItem(puppy: Puppy, onClick: () -> Unit) {
         elevation = 8.dp,
     ) {
         Column(Modifier.clickable(onClick = onClick)) {
-            ListItem(
-                text = { Text(puppy.name) },
-                secondaryText = puppy.caption?.let {
-                    { Text(puppy.caption) }
-                },
-            )
-            Image(
-                painter = painterResource(puppy.image),
-                contentDescription = puppy.name,
-            )
+            Header(puppy)
+            Image(puppy)
         }
     }
+}
+
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+private fun Header(puppy: Puppy) {
+    ListItem(
+        text = { Text(puppy.name) },
+        secondaryText = puppy.caption?.let {
+            { Text(puppy.caption) }
+        },
+    )
+}
+
+@Composable
+private fun Image(puppy: Puppy) {
+    // async loading image for better scroll performance
+    CoilImage(
+        data = puppy.image,
+        contentDescription = puppy.name,
+    )
 }
 
 @Preview("Light Theme", uiMode = Configuration.UI_MODE_NIGHT_NO)
