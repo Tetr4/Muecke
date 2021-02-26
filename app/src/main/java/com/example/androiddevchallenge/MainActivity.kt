@@ -48,6 +48,7 @@ private const val KEY_PUPPY_ID = "id"
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.Theme_AndroidDevChallenge) // remove splash
         setContent {
             MdcTheme {
                 MyApp()
