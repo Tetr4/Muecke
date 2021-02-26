@@ -18,52 +18,53 @@ package com.example.androiddevchallenge.data
 
 import com.example.androiddevchallenge.R
 
-private var id = 0
-
 val PUPPIES = listOf(
     Puppy(
         name = "Mücke",
         caption = "on a pillow",
         description = "Look at those ears!",
-        image = R.drawable.muecke_pillow
+        image = R.drawable.muecke_pillow,
     ),
     Puppy(
         name = "Mücke",
         caption = "in a basket",
         description = "Perfect fit!",
-        image = R.drawable.muecke_basket
+        image = R.drawable.muecke_basket,
     ),
     Puppy(
         name = "Mücke",
         caption = "in a box",
         description = "Hello there.",
-        image = R.drawable.muecke_box
+        image = R.drawable.muecke_box,
     ),
     Puppy(
         name = "Mücke",
         caption = "in the grass",
         description = "Just chilling.",
-        image = R.drawable.muecke_field
+        image = R.drawable.muecke_field,
     ),
     Puppy(
         name = "Mücke",
         caption = "just happy",
-        image = R.drawable.muecke_happy
+        description = "Say cheese!",
+        image = R.drawable.muecke_happy,
     ),
     Puppy(
         name = "Mücke",
         caption = "on a llama",
-        image = R.drawable.muecke_llama
+        description = "So cuddly!",
+        image = R.drawable.muecke_llama,
     ),
     Puppy(
-        name = "Mücke and Schnitzel",
+        name = "Mücke",
+        caption = "and Schnitzel",
         description = "On a walk with a friend.",
-        image = R.drawable.muecke_schnitzel
+        image = R.drawable.muecke_schnitzel,
     ),
     Puppy(
         name = "Mücke",
         caption = "sleeping",
         description = "zzzZZZzzz…",
-        image = R.drawable.muecke_sleepy
+        image = R.drawable.muecke_sleepy,
     ),
 )
