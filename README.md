@@ -1,31 +1,32 @@
-# Template repository
+# Mücke
 
-Template repository for the Jetpack Compose [#AndroidDevChallenge](https://developer.android.com/dev-challenge).
+![Workflow result](https://github.com/Tetr4/Muecke/workflows/Check/badge.svg)
 
-## Getting started
-Copy this repository by pressing the "Use this template" button in Github.
-Clone your repository and open it in the latest [Android Studio (Canary build)](https://developer.android.com/studio/preview).
 
-## Submission requirements
-- Follow the challenge description on the project website: [developer.android.com/dev-challenge](https://developer.android.com/dev-challenge)
-- All UI should be written using Jetpack Compose
-- The Github Actions workflow should complete successfully
-- Include two screenshots of your submission in the [results](results) folder. The names should be
-  screenshot_1.png and screenshot_2.png.
-- Include a screen record of your submission in the [results](results) folder. The name should be
-  video.mp4
-- Replace the contents of [README.md](README.md) with the contents of [README-template.md](README-template.md) and fill out the template.
+## :scroll: Description
+Entry for the [Jetpack Compose Dev Challenge](https://developer.android.com/dev-challenge).  
 
-## Code formatting
-The CI uses [Spotless](https://github.com/diffplug/spotless) to check if your code is formatted correctly and contains the right licenses.
-Internally, Spotless uses [ktlint](https://github.com/pinterest/ktlint) to check the formatting of your code.
-To set up ktlint correctly with Android Studio, follow one of the [listed setup options](https://github.com/pinterest/ktlint#-with-intellij-idea).
+Originally supposed to be an app about puppy adoptions, I kind of went off track and now it's an app
+about Mücke, who is not a puppy anymore and actually not up for adoption :sweat_smile:
+No regrets though :triumph:
 
-Before committing your code, run `./gradlew app:spotlessApply` to automatically format your code.
+## :bulb: Motivation and Context
+I wanted to try Jetpack Compose, since I like how reactive development works in [React](https://reactjs.org/) and [Flutter](https://flutter.dev/). 
+Declarative programming is clearly the paradigm of the future for UI development. 
+Also I got a ton of cute dog pictures.
+
+Some minor challenges I encountered:
+- Scrolling becomes very laggy when using lots of `Image`s with drawables. I solved this by loading images asynchronously with Chris Banes' [accompanist-coil](https://github.com/chrisbanes/accompanist/tree/main/coil).
+- `NavHost` uses viewmodels, which breaks the `@Preview` composables.
+- Implementing the navbar (up navigation, dynamic titles) was kinda tricky. Maybe there is a more idiomatic way.
+
+## :camera_flash: Screenshots
+<img src="/results/screenshot_1.png" width="260" alt="list of puppies">&emsp;<img src="/results/screenshot_2.png" width="260" alt="detail screen">
 
 ## License
 ```
 Copyright 2020 The Android Open Source Project
+Copyright 2021 Mike Klimek
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
