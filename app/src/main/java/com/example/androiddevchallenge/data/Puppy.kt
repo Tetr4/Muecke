@@ -22,6 +22,6 @@ data class Puppy(
     val id: Int,
     val name: String,
     val caption: String? = null,
-    val description: String,
+    val description: String? = null,
     @get:DrawableRes val image: Int,
 )

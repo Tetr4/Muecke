@@ -26,6 +26,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -38,6 +39,7 @@ import com.google.android.material.composethemeadapter.MdcTheme
 @Composable
 fun PuppyDetail(puppy: Puppy) {
     Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.verticalScroll(rememberScrollState())
     ) {
         Image(
@@ -46,11 +48,13 @@ fun PuppyDetail(puppy: Puppy) {
             contentScale = ContentScale.FillWidth,
             modifier = Modifier.fillMaxWidth(),
         )
-        Text(
-            puppy.description,
-            modifier = Modifier.padding(32.dp),
-            style = MaterialTheme.typography.body2,
-        )
+        if (puppy.description != null) {
+            Text(
+                puppy.description,
+                modifier = Modifier.padding(32.dp),
+                style = MaterialTheme.typography.body2,
+            )
+        }
     }
 }
 
