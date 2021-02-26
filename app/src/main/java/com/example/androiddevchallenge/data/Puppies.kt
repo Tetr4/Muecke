@@ -22,53 +22,45 @@ private var id = 0
 
 val PUPPIES = listOf(
     Puppy(
-        id = id++,
         name = "Mücke",
         caption = "on a pillow",
         description = "Look at those ears!",
         image = R.drawable.muecke_pillow
     ),
     Puppy(
-        id = id++,
         name = "Mücke",
         caption = "in a basket",
         description = "Perfect fit!",
         image = R.drawable.muecke_basket
     ),
     Puppy(
-        id = id++,
         name = "Mücke",
         caption = "in a box",
         description = "Hello there.",
         image = R.drawable.muecke_box
     ),
     Puppy(
-        id = id++,
         name = "Mücke",
         caption = "in the grass",
         description = "Just chilling.",
         image = R.drawable.muecke_field
     ),
     Puppy(
-        id = id++,
         name = "Mücke",
         caption = "just happy",
         image = R.drawable.muecke_happy
     ),
     Puppy(
-        id = id++,
         name = "Mücke",
         caption = "on a llama",
         image = R.drawable.muecke_llama
     ),
     Puppy(
-        id = id++,
         name = "Mücke and Schnitzel",
         description = "On a walk with a friend.",
         image = R.drawable.muecke_schnitzel
     ),
     Puppy(
-        id = id++,
         name = "Mücke",
         caption = "sleeping",
         description = "zzzZZZzzz…",

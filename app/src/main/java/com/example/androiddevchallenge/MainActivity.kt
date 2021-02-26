@@ -41,6 +41,9 @@ import com.example.androiddevchallenge.ui.screens.PuppyDetail
 import com.example.androiddevchallenge.ui.screens.PuppyList
 import com.example.androiddevchallenge.ui.widgets.AppBar
 import com.google.android.material.composethemeadapter.MdcTheme
+import java.util.UUID
+
+private const val KEY_PUPPY_ID = "id"
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,8 +91,8 @@ private fun NavGraph(navController: NavHostController) {
             )
         }
         composable(
-            "PuppyDetail/{id}",
-            arguments = listOf(navArgument("id") { type = NavType.IntType })
+            "PuppyDetail/{$KEY_PUPPY_ID}",
+            arguments = listOf(navArgument(KEY_PUPPY_ID) { type = NavType.StringType })
         ) {
             PuppyDetail(it.arguments.getPuppy())
         }
@@ -123,7 +126,8 @@ private fun DarkPreview() {
 }
 
 private fun Bundle?.getPuppy(): Puppy {
-    val id = this?.getInt("id")
+    val idString = this?.getString(KEY_PUPPY_ID)
         ?: throw IllegalArgumentException("id argument is required")
+    val id = UUID.fromString(idString)
     return PUPPIES.first { it.id == id }
 }

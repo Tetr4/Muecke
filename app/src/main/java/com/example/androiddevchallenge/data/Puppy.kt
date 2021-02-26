@@ -17,9 +17,10 @@
 package com.example.androiddevchallenge.data
 
 import androidx.annotation.DrawableRes
+import java.util.UUID
 
 data class Puppy(
-    val id: Int,
+    val id: UUID = UUID.randomUUID(),
     val name: String,
     val caption: String? = null,
     val description: String? = null,

@@ -43,6 +43,7 @@ fun PuppyDetail(puppy: Puppy) {
         modifier = Modifier.verticalScroll(rememberScrollState())
     ) {
         // TODO pinch grab for zoom?
+        // TODO horizontal navigation?
         Image(
             painterResource(puppy.image),
             contentDescription = puppy.name,
