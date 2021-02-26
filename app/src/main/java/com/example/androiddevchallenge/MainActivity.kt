@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 }
 
 @Composable
-fun MyApp() {
+private fun MyApp() {
     val navController = rememberNavController()
     Scaffold(
         topBar = { ControlledAppbar(navController) }
@@ -64,7 +64,7 @@ fun MyApp() {
 }
 
 @Composable
-fun ControlledAppbar(navController: NavHostController) {
+private fun ControlledAppbar(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val route = navBackStackEntry?.arguments?.getString(KEY_ROUTE)
     when (route?.substringBefore('/')) {
@@ -79,7 +79,7 @@ fun ControlledAppbar(navController: NavHostController) {
 }
 
 @Composable
-fun NavGraph(navController: NavHostController) {
+private fun NavGraph(navController: NavHostController) {
     NavHost(navController, startDestination = "PuppyList") {
         composable("PuppyList") {
             PuppyList(

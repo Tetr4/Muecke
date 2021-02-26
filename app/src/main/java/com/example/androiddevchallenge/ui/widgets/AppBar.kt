@@ -47,7 +47,7 @@ fun AppBar(title: String, onBackPressed: (() -> Unit)? = null) {
 }
 
 @Composable
-fun BackArrow(onBackPressed: () -> Unit) {
+private fun BackArrow(onBackPressed: () -> Unit) {
     IconButton(onClick = onBackPressed) {
         Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
     }
