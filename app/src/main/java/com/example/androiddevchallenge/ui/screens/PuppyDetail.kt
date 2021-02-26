@@ -28,6 +28,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -40,24 +41,38 @@ import com.google.android.material.composethemeadapter.MdcTheme
 fun PuppyDetail(puppy: Puppy) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.verticalScroll(rememberScrollState())
+        modifier = Modifier
+            .padding(16.dp)
+            .verticalScroll(rememberScrollState())
     ) {
-        // TODO pinch grab for zoom?
-        // TODO horizontal navigation?
-        Image(
-            painterResource(puppy.image),
-            contentDescription = puppy.name,
-            contentScale = ContentScale.FillWidth,
-            modifier = Modifier.fillMaxWidth(),
-        )
+        Picture(puppy)
         if (puppy.description != null) {
-            Text(
-                puppy.description,
-                modifier = Modifier.padding(32.dp),
-                style = MaterialTheme.typography.body2,
-            )
+            Description(puppy.description)
         }
+        // TODO horizontal navigation?
     }
+}
+
+@Composable
+fun Picture(puppy: Puppy) {
+    // TODO pinch grab for zoom?
+    Image(
+        painterResource(puppy.image),
+        contentDescription = puppy.name,
+        contentScale = ContentScale.FillWidth,
+        modifier = Modifier
+            .clip(MaterialTheme.shapes.medium)
+            .fillMaxWidth(),
+    )
+}
+
+@Composable
+fun Description(description: String) {
+    Text(
+        description,
+        modifier = Modifier.padding(32.dp),
+        style = MaterialTheme.typography.body2,
+    )
 }
 
 @Preview("Light Theme", uiMode = Configuration.UI_MODE_NIGHT_NO)
