@@ -20,52 +20,58 @@ import com.example.androiddevchallenge.R
 
 private var id = 0
 
-private val prototype = Puppy(
-    id = id++,
-    name = "Mücke",
-    description = "Just look at those ears! Also not up for adoption anymore.",
-    image = R.drawable.muecke_portrait,
-)
-
 val PUPPIES = listOf(
-    prototype.copy(
+    Puppy(
         id = id++,
-        caption = "On a pillow",
+        name = "Mücke",
+        caption = "on a pillow",
+        description = "Look at those ears!",
         image = R.drawable.muecke_pillow
     ),
-    prototype.copy(
+    Puppy(
         id = id++,
-        caption = "In a basket",
+        name = "Mücke",
+        caption = "in a basket",
+        description = "Perfect fit!",
         image = R.drawable.muecke_basket
     ),
-    prototype.copy(
+    Puppy(
         id = id++,
-        caption = "In a box",
+        name = "Mücke",
+        caption = "in a box",
+        description = "Hello there.",
         image = R.drawable.muecke_box
     ),
-    prototype.copy(
+    Puppy(
         id = id++,
-        caption = "In the grass",
+        name = "Mücke",
+        caption = "in the grass",
+        description = "Just chilling.",
         image = R.drawable.muecke_field
     ),
-    prototype.copy(
+    Puppy(
         id = id++,
-        caption = "Just happy",
+        name = "Mücke",
+        caption = "just happy",
         image = R.drawable.muecke_happy
     ),
-    prototype.copy(
+    Puppy(
         id = id++,
-        caption = "On a llama",
+        name = "Mücke",
+        caption = "on a llama",
         image = R.drawable.muecke_llama
     ),
-    prototype.copy(
+    Puppy(
         id = id++,
         name = "Mücke and Schnitzel",
+        description = "On a walk with a friend.",
         image = R.drawable.muecke_schnitzel
     ),
-    prototype.copy(
+    Puppy(
         id = id++,
-        caption = "Sleeping",
+        name = "Mücke",
+        caption = "sleeping",
+        description = "zzzZZZzzz…",
         image = R.drawable.muecke_sleepy
     ),
 )
