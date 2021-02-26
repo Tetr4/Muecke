@@ -42,6 +42,7 @@ fun PuppyDetail(puppy: Puppy) {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.verticalScroll(rememberScrollState())
     ) {
+        // TODO pinch grab for zoom?
         Image(
             painterResource(puppy.image),
             contentDescription = puppy.name,
