@@ -46,7 +46,7 @@ fun PuppyItem(puppy: Puppy, onClick: () -> Unit) {
     ) {
         Column(Modifier.clickable(onClick = onClick)) {
             Header(puppy)
-            Image(puppy)
+            Thumbnail(puppy)
         }
     }
 }
@@ -63,17 +63,17 @@ private fun Header(puppy: Puppy) {
 }
 
 @Composable
-private fun Image(puppy: Puppy) {
+private fun Thumbnail(puppy: Puppy) {
     // async loading image for better scroll performance
     CoilImage(
         data = puppy.image,
         contentDescription = puppy.name,
-        loading = { LoadingImage() }
+        loading = { LoadingIndicator() }
     )
 }
 
 @Composable
-private fun LoadingImage() {
+private fun LoadingIndicator() {
     Box(
         modifier = Modifier
             .height(80.dp)
